@@ -14,13 +14,13 @@ Install all dependencies
 npm install
 ```
 
-then use to run in production mode
+then use this command to create build in production mode
 
 ```bash
 npm run build
 ```
 
-or run it in development mode
+or build it in development mode
 
 ```bash
 npm run dev
