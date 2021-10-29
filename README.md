@@ -28,4 +28,4 @@ npm run dev
 
 ## Usage
 
-It should create create and build the app in "Dist" folder. Use Live Server PLugin to use it or run directly index.html
+It should create create and build the app in "Dist" folder. Use Live Server Plugin to use it or run directly index.html
