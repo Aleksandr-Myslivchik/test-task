@@ -1,0 +1,1 @@
+export const HIDE_CHILDREN_OPTIONS_TIMEOUT = 200

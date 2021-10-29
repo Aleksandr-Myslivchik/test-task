@@ -1,0 +1,238 @@
+@import url('select__header.css');
+@import url('select__footer.css');
+
+@font-face {
+  font-family: "Source Sans Pro";
+  src: url('../assets/fonts/SourceSansPro-Regular.ttf') format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #484545;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.custom-select-root.active {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  z-index: 100;
+  overflow: hidden;
+}
+
+.select {
+  position: relative;
+  padding: 5px 15px 10px 60px;
+  transform: rotate(0);
+}
+
+.visually-hidden,
+.select {
+  display: none;
+}
+
+.select.active {
+  display: flex;
+  flex: 1 1 auto;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-direction: column;
+
+}
+
+.select__option__children-container {
+  margin-left: 1em;
+  position: relative;
+  z-index: 30;
+}
+
+.select .select__option__item {
+  padding: 10px 0 0;
+  position: relative;
+}
+
+.select__option__checkbox__wrapper {
+  position: fixed;
+  z-index: 150;
+  left: 20px;
+  width: 18px;
+  height: 18px;
+}
+
+.select__option__checkbox__wrapper input {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.select__option__checkbox__wrapper.checked::after {
+  content: "";
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #035b77;
+}
+
+.select__checkbox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  border: 1px solid #035b77;
+  border-radius: 4px;
+}
+
+.select__checkbox::before {
+  content: "";
+  width: 10px;
+  height: 1.5px;
+  background: #fff;
+  position: absolute;
+  top: 7.5px;
+  left: 5px;
+  transform: rotate(-62deg);
+  border-radius: 0px 0px 0px 4px;
+}
+
+.select__checkbox::after {
+  content: "";
+  width: 5.5px;
+  height: 1.5px;
+  background: #fff;
+  position: absolute;
+  top: 10.2px;
+  left: 3.4px;
+  transform: rotate(34deg);
+  border-radius: 0 4px 4px 0;
+}
+
+.select input:checked+.select__checkbox {
+  background: #035b77;
+  border-radius: 4px;
+}
+
+.select input:checked {
+  border-color: #fff;
+}
+
+.select__option__item__description {
+  position: relative;
+  cursor: pointer;
+}
+
+.select .nested .arrow~.select__option__children-container {
+  display: none;
+  opacity: 0;
+  transition: opacity .2s linear;
+}
+
+.select .nested .arrow.show.inprocess~.select__option__children-container {
+  opacity: 0;
+}
+
+.select .nested .arrow.inprocess~.select__option__children-container {
+  opacity: 0;
+  display: block;
+}
+
+.select .nested .arrow.show~.select__option__children-container {
+  display: block;
+  opacity: 1;
+}
+
+.select .nested {
+  position: relative;
+}
+
+/*дать border по таймингу*/
+.select .nested::after {
+  content: "";
+  position: absolute;
+  z-index: 100;
+  left: -8px;
+  bottom: 0;
+  top: 30px;
+  width: 1px;
+  border-left: 0px dashed #d9d9d9;
+  transition: border 0.2s ease;
+}
+
+.select .nested.show-border::after {
+  border-left: 1px dashed #d9d9d9;
+}
+
+.select .nested .arrow {
+  position: absolute;
+  left: -12.5px;
+  top: 12px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.some-childs-checked.select__checkbox::before {
+  content: "";
+  display: inline;
+  width: 4px;
+  height: 4px;
+  background-color: #035b77;
+  transform: translate(calc(50% - 1px), calc(50% - 3.5px));
+  border-radius: 50%;
+  z-index: 50;
+}
+
+.select .nested .arrow div {
+  border: 1px solid #000000;
+  border-right: none;
+  border-bottom: none;
+  transform: rotate(-135deg);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  width: 5px;
+  height: 5px;
+}
+
+.select .nested .arrow.show div {
+  transform: rotate(45deg);
+}
+
+
+.select .select__option__item.active > .select__option__overlay {
+  background: linear-gradient(0deg, rgba(3, 91, 119, 0.05), rgba(3, 91, 119, 0.05)), #FFFFFF;
+  position: absolute;
+  z-index: -1;
+  left: -100vh;
+  right: -100vh;
+  top: 0;
+  bottom: -10px;
+}
