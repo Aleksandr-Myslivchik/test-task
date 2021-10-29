@@ -195,7 +195,7 @@ body {
 .select .nested .arrow {
   position: absolute;
   left: -12.5px;
-  top: 12px;
+  top: 16px;
   cursor: pointer;
   padding: 2px;
 }

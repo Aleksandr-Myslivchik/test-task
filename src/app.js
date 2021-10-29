@@ -87,7 +87,6 @@ export default class Selects {
       })
       const input = selectWrapperElement.querySelector('.select-block__input-item')
       input.addEventListener('input', (e) => {
-
         searchOption(e, selectItem.state, customSelect)
       })
       input.addEventListener('paste', (e) => {

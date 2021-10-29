@@ -26,6 +26,5 @@ export const checkParenCheckboxState = (element) => {
   } else {
     targetParentCheckBox.checked = stateNotAll;
     parentCheckBoxWrapper.classList.remove("some-childs-checked");
-
   }
 };
